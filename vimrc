@@ -7,10 +7,6 @@ set hidden
 " go stuff
 set rtp+=/usr/local/go/misc/vim
 
-" force myself to learn ctrl-c/fj to exit insert mode
-inoremap fj <esc>
-inoremap <esc> <nop>
-
 " make ESC work for command-T
 let g:CommandTCancelMap=['<ESC>','<C-c>']
 
