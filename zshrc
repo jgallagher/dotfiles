@@ -122,6 +122,11 @@ if [[ -d /opt/local ]]; then
     export MANPATH=$MANPATH:/opt/local/share/man
 fi
 
+# look for macvim
+if [[ -f /usr/local/bin/mvim ]]; then
+    alias vim='mvim -v'
+fi
+
 # generic environment
 export EDITOR=vim
 export PAGER=less
