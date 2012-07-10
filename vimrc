@@ -10,6 +10,9 @@ set rtp+=/usr/local/go/misc/vim
 " make ESC work for command-T
 let g:CommandTCancelMap=['<ESC>','<C-c>']
 
+" allow mouse usage in terminal
+set mouse=a
+
 " make leaving insert mode faster
 set ttimeout
 set ttimeoutlen=1
