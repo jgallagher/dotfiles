@@ -8,7 +8,11 @@ set hidden
 set encoding=utf-8
 
 " go stuff
-set rtp+=/usr/local/go/misc/vim
+if isdirectory("/usr/local/go/misc/vim")
+    set rtp+=/usr/local/go/misc/vim
+elseif isdirectory("/usr/share/go/misc/vim")
+    set rtp+=/usr/share/go/misc/vim
+endif
 
 " make ESC work for command-T
 let g:CommandTCancelMap=['<ESC>','<C-c>']
