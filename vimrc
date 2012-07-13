@@ -129,8 +129,7 @@ nmap <silent> ]] j0[[%/{<cr>
 nmap <silent> [] k$][%?}<cr>
 
 " show tabs and trailing spaces
-"set listchars=tab:>-,trail:-
-set listchars=tab:▸▸,trail:ˉ
+set listchars=tab:>-,trail:-
 set list
 
 " Go stuff
