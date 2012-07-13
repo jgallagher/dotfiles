@@ -53,7 +53,7 @@ set showmode
 
 " better menu completion
 set wildmenu
-set wildmode=longest,list
+set wildmode=longest,list:longest
 set wildignore+=*.pyc
 
 " show $ in change mode
