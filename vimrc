@@ -128,7 +128,7 @@ if exists('$TMUX')
         let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]12;black\x9c\<Esc>\\"
         let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]12;red\x9c\<Esc>\\"
     endif
-else
+elif &term =~ "256color"
     if exists('$ITERM_PROFILE') || exists('$KONSOLE_DBUS_SESSION')
         let &t_EI = "\<Esc>]50;CursorShape=0\x7"
         let &t_SI = "\<Esc>]50;CursorShape=1\x7"
