@@ -4,11 +4,25 @@ set nocompatible
 " allow dirty buffers
 set hidden
 
+" proper encoding
+set encoding=utf-8
+
 " go stuff
-set rtp+=/usr/local/go/misc/vim
+if isdirectory("/usr/local/go/misc/vim")
+    set rtp+=/usr/local/go/misc/vim
+elseif isdirectory("/usr/share/go/misc/vim")
+    set rtp+=/usr/share/go/misc/vim
+endif
 
 " make ESC work for command-T
 let g:CommandTCancelMap=['<ESC>','<C-c>']
+
+" see more lines
+set scrolloff=3
+
+" allow mouse usage in terminal, and make it more responsive
+set mouse=a
+set ttyfast
 
 " make leaving insert mode faster
 set ttimeout
@@ -25,6 +39,9 @@ nmap <silent> ,ww :%s/^\s\+$//<cr> :%s/\s\+$//<cr>
 " filetype stuff
 filetype plugin indent on
 
+" autoindenting
+set autoindent
+
 " syntax highlighting
 syntax on
 
@@ -36,22 +53,26 @@ set showmode
 
 " better menu completion
 set wildmenu
-set wildmode=longest,list
+set wildmode=longest,list:longest
 set wildignore+=*.pyc
 
 " show $ in change mode
-set cpoptions+=$
+" set cpoptions+=$
 
 " edit vimrc with ,ev and resource it with ,sv
 nmap <silent> ,ev :e $MYVIMRC<cr>
 nmap <silent> ,sv :so $MYVIMRC<cr>
 
 " line numbers
-set nu
+set number
+
+" experiment: try relative line numbering
+set relativenumber
 
 " case sensitive, highlit searches that match incrementally
 set noignorecase
-set hls
+set smartcase
+set hlsearch
 set incsearch
 
 " ,cl to clear the search highlighting
@@ -77,6 +98,9 @@ set guioptions=aecg
 
 " allow cursor to go to nonexistant places
 set virtualedit=block
+
+" faster vertical split (select new window)
+nnoremap <leader>v <C-w>v<C-w>l
 
 " faster window movement
 noremap <silent> ,h :wincmd h<cr>
@@ -117,23 +141,26 @@ endfunction
 
 autocmd Filetype go command! Fmt call Goformat()
 
-" Change cursor to red in insert mode
-"if &term =~ "screen"
-"if &term =~ "rxvt-unicode-256color"
-if exists('$TMUX')
-    if exists('$ITERM_PROFILE') || exists('$KONSOLE_DBUS_SESSION')
-        let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
-        let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
-    else
-        let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]12;black\x9c\<Esc>\\"
-        let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]12;red\x9c\<Esc>\\"
-    endif
-elif &term =~ "256color"
-    if exists('$ITERM_PROFILE') || exists('$KONSOLE_DBUS_SESSION')
-        let &t_EI = "\<Esc>]50;CursorShape=0\x7"
-        let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-    else
-        let &t_EI = "\<Esc>]12;black\x9c"
-        let &t_SI = "\<Esc>]12;red\x9c"
+if exists('$SSH_CONNECTION')
+    " Highlight line we're on
+    au InsertEnter,InsertLeave * set cul!
+else
+    " Change cursor to red in insert mode, or use cursor shape if possible
+    if exists('$TMUX')
+        if exists('$ITERM_PROFILE') || exists('$KONSOLE_DBUS_SESSION')
+            let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+            let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+        else
+            let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]12;black\x9c\<Esc>\\"
+            let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]12;red\x9c\<Esc>\\"
+        endif
+    elseif &term =~ "256-color"
+        if exists('$ITERM_PROFILE') || exists('$KONSOLE_DBUS_SESSION')
+            let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+            let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+        else
+            let &t_EI = "\<Esc>]12;black\x9c"
+            let &t_SI = "\<Esc>]12;red\x9c"
+        endif
     endif
 endif
