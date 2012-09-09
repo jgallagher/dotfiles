@@ -78,6 +78,7 @@ setopt NO_AUTO_MENU    # don't cycle through options
 function add_git_ps1() {
     for file (
         /usr/share/git/completion/git-completion.bash
+        /usr/share/git-core/git-completion.bash
         $HOME/.git-completion.sh
         )
     do
