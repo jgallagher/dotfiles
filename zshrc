@@ -116,6 +116,9 @@ declare -U path
 if [[ -d /usr/local/go/bin ]]; then
     path=($path /usr/local/go/bin)
 fi
+if [[ -d $HOME/gocode ]]; then
+    export GOPATH=$HOME/gocode
+fi
 
 # look for homebrew
 if [[ -d /usr/local ]]; then
