@@ -135,8 +135,10 @@ set list
 
 " Change cursor to red in insert mode, or use cursor shape if possible
 if exists('$SSH_CONNECTION')
+    " Highlight line we're on
     au InsertEnter,InsertLeave * set cul!
 else
+    " Change cursor to red in insert mode, or use cursor shape if possible
     if exists('$TMUX')
         if exists('$ITERM_PROFILE') || exists('$KONSOLE_DBUS_SESSION')
             let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
@@ -145,7 +147,7 @@ else
             let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]12;black\x9c\<Esc>\\"
             let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]12;red\x9c\<Esc>\\"
         endif
-    else
+    elseif &term =~ "256-color"
         if exists('$ITERM_PROFILE') || exists('$KONSOLE_DBUS_SESSION')
             let &t_EI = "\<Esc>]50;CursorShape=0\x7"
             let &t_SI = "\<Esc>]50;CursorShape=1\x7"
