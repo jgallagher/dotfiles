@@ -67,7 +67,8 @@ nmap <silent> ,sv :so $MYVIMRC<cr>
 set number
 
 " experiment: try relative line numbering
-set relativenumber
+" don't like it
+"set relativenumber
 
 " case sensitive, highlit searches that match incrementally
 set noignorecase
@@ -131,15 +132,6 @@ nmap <silent> [] k$][%?}<cr>
 " show tabs and trailing spaces
 set listchars=tab:>-,trail:-
 set list
-
-" Go stuff
-function! Goformat()
-    let regel=line(".")
-    %!gofmt
-    call cursor(regel, 1)
-endfunction
-
-autocmd Filetype go command! Fmt call Goformat()
 
 " Change cursor to red in insert mode, or use cursor shape if possible
 if exists('$SSH_CONNECTION')
