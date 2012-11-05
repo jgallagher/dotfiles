@@ -122,6 +122,11 @@ if [[ -d /opt/local ]]; then
     export MANPATH=$MANPATH:/opt/local/share/man
 fi
 
+# look for Postgres.app
+if [[ -d /Applications/Postgres.app/Contents/MacOS/bin ]]; then
+    path=(/Applications/Postgres.app/Contents/MacOS/bin $path)
+fi
+
 # look for macvim
 if [[ -f /usr/local/bin/mvim ]]; then
     alias vim='mvim -v'
