@@ -85,7 +85,8 @@ set colorcolumn=80
 " gui display stuff
 set guifont="DejaVu Sans Mono 9"
 set t_Co=256
-colorscheme morning
+"colorscheme morning
+colorscheme wombat256mod
 
 " visual bell (no sound)
 set vb
