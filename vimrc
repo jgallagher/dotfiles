@@ -67,7 +67,8 @@ nmap <silent> ,sv :so $MYVIMRC<cr>
 set number
 
 " experiment: try relative line numbering
-set relativenumber
+" don't like it
+"set relativenumber
 
 " case sensitive, highlit searches that match incrementally
 set noignorecase
@@ -84,7 +85,8 @@ set colorcolumn=80
 " gui display stuff
 set guifont="DejaVu Sans Mono 9"
 set t_Co=256
-colorscheme morning
+"colorscheme morning
+colorscheme wombat256mod
 
 " visual bell (no sound)
 set vb
@@ -132,19 +134,12 @@ nmap <silent> [] k$][%?}<cr>
 set listchars=tab:>-,trail:-
 set list
 
-" Go stuff
-function! Goformat()
-    let regel=line(".")
-    %!gofmt
-    call cursor(regel, 1)
-endfunction
-
-autocmd Filetype go command! Fmt call Goformat()
-
 " Change cursor to red in insert mode, or use cursor shape if possible
 if exists('$SSH_CONNECTION')
+    " Highlight line we're on
     au InsertEnter,InsertLeave * set cul!
 else
+    " Change cursor to red in insert mode, or use cursor shape if possible
     if exists('$TMUX')
         if exists('$ITERM_PROFILE') || exists('$KONSOLE_DBUS_SESSION')
             let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
@@ -153,7 +148,7 @@ else
             let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]12;black\x9c\<Esc>\\"
             let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]12;red\x9c\<Esc>\\"
         endif
-    else
+    elseif &term =~ "256-color"
         if exists('$ITERM_PROFILE') || exists('$KONSOLE_DBUS_SESSION')
             let &t_EI = "\<Esc>]50;CursorShape=0\x7"
             let &t_SI = "\<Esc>]50;CursorShape=1\x7"

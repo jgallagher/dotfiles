@@ -79,6 +79,7 @@ function add_git_ps1() {
     for file (
         /usr/share/git/completion/git-completion.bash
         /usr/share/git/completion/git-prompt.sh
+        /usr/share/git-core/git-completion.bash
         $HOME/.git-completion.sh
         )
     do
@@ -116,10 +117,20 @@ if [[ -d /usr/local/go/bin ]]; then
     path=($path /usr/local/go/bin)
 fi
 
-# look for macports
-if [[ -d /opt/local ]]; then
-    path=($path /opt/local/bin /opt/local/sbin)
-    export MANPATH=$MANPATH:/opt/local/share/man
+# look for homebrew
+if [[ -d /usr/local ]]; then
+    path=(/usr/local/bin /usr/local/sbin $path)
+    export MANPATH=$MANPATH:/usr/local/share/man
+fi
+
+# look for Postgres.app
+if [[ -d /Applications/Postgres.app/Contents/MacOS/bin ]]; then
+    path=(/Applications/Postgres.app/Contents/MacOS/bin $path)
+fi
+
+# look for Postgres.app
+if [[ -d /Applications/Postgres.app/Contents/MacOS/bin ]]; then
+    path=(/Applications/Postgres.app/Contents/MacOS/bin $path)
 fi
 
 # look for macvim
