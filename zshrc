@@ -78,6 +78,7 @@ setopt NO_AUTO_MENU    # don't cycle through options
 function add_git_ps1() {
     for file (
         /usr/share/git/completion/git-completion.bash
+        /usr/share/git/completion/git-prompt.sh
         $HOME/.git-completion.sh
         )
     do
@@ -86,7 +87,6 @@ function add_git_ps1() {
             export GIT_PS1_SHOWDIRTYSTATE=1
             source $file
             gitps1='%F{cyan}$(__git_ps1 " (%s)")%f'
-            return
         fi
     done
 }
