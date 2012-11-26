@@ -120,20 +120,21 @@ if [[ -d $HOME/gocode ]]; then
     export GOPATH=$HOME/gocode
 fi
 
+# look for Postgres.app
+if [[ -d /Applications/Postgres.app/Contents/MacOS/bin ]]; then
+    path=(/Applications/Postgres.app/Contents/MacOS/bin $path)
+fi
+
 # look for homebrew
 if [[ -d /usr/local ]]; then
     path=(/usr/local/bin /usr/local/sbin $path)
     export MANPATH=$MANPATH:/usr/local/share/man
-fi
-
-# look for Postgres.app
-if [[ -d /Applications/Postgres.app/Contents/MacOS/bin ]]; then
-    path=(/Applications/Postgres.app/Contents/MacOS/bin $path)
-fi
-
-# look for Postgres.app
-if [[ -d /Applications/Postgres.app/Contents/MacOS/bin ]]; then
-    path=(/Applications/Postgres.app/Contents/MacOS/bin $path)
+    if [[ -d /usr/local/share/python ]]; then
+        path=(/usr/local/share/python $path)
+    fi
+    if [[ -d /usr/local/share/npm/bin ]]; then
+        path=($path /usr/local/share/npm/bin)
+    fi
 fi
 
 # look for macvim
