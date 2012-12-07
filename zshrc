@@ -78,6 +78,7 @@ setopt NO_AUTO_MENU    # don't cycle through options
 function add_git_ps1() {
     for file (
         /usr/share/git/completion/git-completion.bash
+        /usr/share/git/completion/git-prompt.sh
         /usr/share/git-core/git-completion.bash
         $HOME/.git-completion.sh
         )
@@ -87,7 +88,6 @@ function add_git_ps1() {
             export GIT_PS1_SHOWDIRTYSTATE=1
             source $file
             gitps1='%F{cyan}$(__git_ps1 " (%s)")%f'
-            return
         fi
     done
 }
@@ -116,21 +116,25 @@ declare -U path
 if [[ -d /usr/local/go/bin ]]; then
     path=($path /usr/local/go/bin)
 fi
+if [[ -d $HOME/gocode ]]; then
+    export GOPATH=$HOME/gocode
+fi
+
+# look for Postgres.app
+if [[ -d /Applications/Postgres.app/Contents/MacOS/bin ]]; then
+    path=(/Applications/Postgres.app/Contents/MacOS/bin $path)
+fi
 
 # look for homebrew
 if [[ -d /usr/local ]]; then
     path=(/usr/local/bin /usr/local/sbin $path)
     export MANPATH=$MANPATH:/usr/local/share/man
-fi
-
-# look for Postgres.app
-if [[ -d /Applications/Postgres.app/Contents/MacOS/bin ]]; then
-    path=(/Applications/Postgres.app/Contents/MacOS/bin $path)
-fi
-
-# look for Postgres.app
-if [[ -d /Applications/Postgres.app/Contents/MacOS/bin ]]; then
-    path=(/Applications/Postgres.app/Contents/MacOS/bin $path)
+    if [[ -d /usr/local/share/python ]]; then
+        path=(/usr/local/share/python $path)
+    fi
+    if [[ -d /usr/local/share/npm/bin ]]; then
+        path=($path /usr/local/share/npm/bin)
+    fi
 fi
 
 # look for macvim
