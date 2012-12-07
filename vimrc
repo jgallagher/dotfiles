@@ -1,6 +1,9 @@
 " act like vim not vi
 set nocompatible
 
+" turn on pathogen
+call pathogen#infect()
+
 " allow dirty buffers
 set hidden
 
