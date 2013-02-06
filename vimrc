@@ -1,8 +1,10 @@
 " act like vim not vi
 set nocompatible
 
-" turn on pathogen
-call pathogen#infect()
+" experiment - vundle instead of pathogen
+set rtp+=~/.vim/bundle/vundle
+call vundle#rc()
+Bundle 'gmarik/vundle'
 
 " allow dirty buffers
 set hidden
