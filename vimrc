@@ -15,6 +15,8 @@ if isdirectory("/usr/local/go/misc/vim")
     set rtp+=/usr/local/go/misc/vim
 elseif isdirectory("/usr/share/go/misc/vim")
     set rtp+=/usr/share/go/misc/vim
+elseif isdirectory("/usr/local/Cellar/go/1.0.3/misc/vim")
+    set rtp+=/usr/local/Cellar/go/1.0.3/misc/vim
 endif
 
 " make ESC work for command-T
