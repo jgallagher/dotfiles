@@ -80,6 +80,7 @@ function add_git_ps1() {
         /usr/share/git/completion/git-completion.bash
         /usr/share/git/completion/git-prompt.sh
         /usr/share/git-core/git-completion.bash
+        /usr/share/git-core/git-prompt.sh
         $HOME/.git-completion.sh
         )
     do
