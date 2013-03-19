@@ -129,7 +129,7 @@ fi
 # look for homebrew
 if [[ -d /usr/local ]]; then
     path=(/usr/local/bin /usr/local/sbin $path)
-    export MANPATH=$MANPATH:/usr/local/share/man
+    export MANPATH=/usr/local/share/man:$MANPATH
     if [[ -d /usr/local/share/python ]]; then
         path=(/usr/local/share/python $path)
     fi
