@@ -138,6 +138,11 @@ if [[ -d /usr/local ]]; then
     fi
 fi
 
+# look for rubygem binaries
+if [[ -d /usr/local/opt/ruby/bin ]]; then
+    path=($path /usr/local/opt/ruby/bin)
+fi
+
 # look for macvim
 if [[ -f /usr/local/bin/mvim ]]; then
     alias vim='mvim -v'
