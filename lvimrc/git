@@ -1,2 +1,2 @@
-autocmd FileType c setlocal nolist noexpandtab tabstop=8 shiftwidth=8
+autocmd FileType c,cpp setlocal nolist noexpandtab tabstop=8 shiftwidth=8
 doautocmd FileType
