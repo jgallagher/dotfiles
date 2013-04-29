@@ -74,21 +74,41 @@ zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 setopt NO_AUTO_MENU    # don't cycle through options
 #setopt NO_ALWAYS_LAST_PROMPT  # return to prompt after listing
 
-# if we have git-completion, sets $gitps1 for inclusion in PS1 below
+# see if we have a zsh _git completion file already
+if [ -f /usr/local/share/zsh/site-functions/_git ]; then
+    fpath=(/usr/local/share/zsh/site-functions $fpath)
+else
+    # look for git-completion script
+    for file (
+        $HOME/.git-completion.sh
+        /usr/share/git-core/git-completion.bash
+        /usr/share/git/completion/git-completion.bash
+        )
+    do
+        if [ -f $file ]; then
+            source $file
+            break
+        fi
+    done
+fi
+
+# if we can find git-prompt.sh, sets $gitps1 for inclusion in PS1 below
 function add_git_ps1() {
     for file (
-        /usr/share/git/completion/git-completion.bash
+        $HOME/.git-prompt.zsh
+        /usr/local/etc/bash_completion.d/git-prompt.sh
         /usr/share/git/completion/git-prompt.sh
-        /usr/share/git-core/git-completion.bash
         /usr/share/git-core/git-prompt.sh
-        $HOME/.git-completion.sh
         )
     do
         if [ -f $file ]; then
             export GIT_PS1_SHOWSTASHSTATE=1
             export GIT_PS1_SHOWDIRTYSTATE=1
+            export GIT_PS1_SHOWUNTRACKEDFILES=1
+            export GIT_PS1_SHOWUPSTREAM=auto
             source $file
             gitps1='%F{cyan}$(__git_ps1 " (%s)")%f'
+            break
         fi
     done
 }
