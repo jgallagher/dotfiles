@@ -5,6 +5,13 @@ set nocompatible
 set rtp+=~/.vim/bundle/vundle
 call vundle#rc()
 Bundle 'gmarik/vundle'
+Bundle 'vim-scripts/localvimrc'
+
+" whitelist lvimrc files under our git repo
+if isdirectory(expand("~/dotfiles/lvimrc"))
+    let g:localvimrc_whitelist=expand("~/dotfiles/lvimrc/.\\*")
+    let g:localvimrc_sandbox=0
+endif
 
 " allow dirty buffers
 set hidden
