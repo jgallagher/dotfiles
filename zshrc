@@ -148,6 +148,11 @@ if [[ -f /usr/local/bin/mvim ]]; then
     alias vim='mvim -v'
 fi
 
+# look for mysql
+if [[ -d /usr/local/mysql/bin ]]; then
+    path=($path /usr/local/mysql/bin)
+fi
+
 # generic environment
 export EDITOR=vim
 export PAGER=less
