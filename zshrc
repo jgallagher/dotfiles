@@ -140,7 +140,7 @@ fi
 
 # look for rubygem binaries
 if [[ -d /usr/local/opt/ruby/bin ]]; then
-    path=($path /usr/local/opt/ruby/bin)
+    path=(/usr/local/opt/ruby/bin $path)
 fi
 
 # look for macvim
