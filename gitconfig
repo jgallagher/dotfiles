@@ -5,3 +5,5 @@
 	ui = auto
 [core]
 	pager = less -R -x 5,9
+[push]
+	default = simple
