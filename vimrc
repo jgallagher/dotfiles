@@ -4,8 +4,10 @@ set nocompatible
 " experiment - vundle instead of pathogen
 set rtp+=~/.vim/bundle/vundle
 call vundle#rc()
-Bundle 'gmarik/vundle'
-Bundle 'vim-scripts/localvimrc'
+Bundle 'godlygeek/tabular'
+Bundle 'elixir-lang/vim-elixir'
+"Bundle 'gmarik/vundle'
+"Bundle 'vim-scripts/localvimrc'
 
 " whitelist lvimrc files under our git repo
 if isdirectory(expand("~/dotfiles/lvimrc"))
@@ -18,6 +20,14 @@ set hidden
 
 " proper encoding
 set encoding=utf-8
+
+" allow backspace in insert mode
+set backspace=indent,eol,start
+
+" sane tab settings
+set expandtab
+set tabstop=4
+set shiftwidth=4
 
 " go stuff
 if isdirectory("/usr/local/go/misc/vim")
@@ -35,8 +45,8 @@ let g:CommandTCancelMap=['<ESC>','<C-c>']
 set scrolloff=3
 
 " allow mouse usage in terminal, and make it more responsive
-set mouse=a
-set ttyfast
+"set mouse=a
+"set ttyfast
 
 " make leaving insert mode faster
 set ttimeout
