@@ -17,6 +17,9 @@ if [[ -d "$HOME/.zsh/help" ]]; then
     HELPDIR=$HOME/.zsh/help
 fi
 
+# Force tmux to use 256 colors
+alias tmux='tmux -2'
+
 # Make ctrl-s forward history search instead of stopping tty flow
 setopt NO_FLOW_CONTROL
 
@@ -141,6 +144,11 @@ if [[ -d $HOME/gocode ]]; then
     export GOPATH=$HOME/gocode
 fi
 
+# look for ~/bin
+if [[ -d $HOME/bin ]]; then
+    path=($path $HOME/bin)
+fi
+
 # look for Postgres.app
 if [[ -d /Applications/Postgres.app/Contents/MacOS/bin ]]; then
     path=(/Applications/Postgres.app/Contents/MacOS/bin $path)
@@ -150,9 +158,6 @@ fi
 if [[ -d /usr/local ]]; then
     path=(/usr/local/bin /usr/local/sbin $path)
     export MANPATH=/usr/local/share/man:$MANPATH
-    if [[ -d /usr/local/share/python ]]; then
-        path=(/usr/local/share/python $path)
-    fi
     if [[ -d /usr/local/share/npm/bin ]]; then
         path=($path /usr/local/share/npm/bin)
     fi
@@ -162,6 +167,9 @@ fi
 if [[ -d /usr/local/opt/ruby/bin ]]; then
     path=(/usr/local/opt/ruby/bin $path)
 fi
+
+# configure rbenv
+if which rbenv > /dev/null; then eval "$(rbenv init - zsh)"; fi
 
 # look for macvim
 if [[ -f /usr/local/bin/mvim ]]; then
