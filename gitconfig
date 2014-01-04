@@ -1,6 +1,6 @@
 [user]
         name = John Gallagher
-        email = johnkgallagher@gmail.com
+        email = jgallagher@bignerdranch.com
 [color]
 	ui = auto
 [core]
@@ -8,3 +8,5 @@
 	excludesfile = ~/.gitexclude
 [push]
 	default = simple
+[alias]
+	l = log --graph --abbrev-commit --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
