@@ -2,3 +2,4 @@
 .DS_Store
 *.xccheckout
 xcuserdata
+.irb-history
