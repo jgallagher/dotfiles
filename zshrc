@@ -185,3 +185,8 @@ fi
 export EDITOR=vim
 export PAGER=less
 export LESS=-r
+
+# attach to running xcode
+xcode-debug() {
+    lldb -p `ps aux | grep 'Xcode$' | grep -v grep | awk '{print $2}'`
+}
