@@ -10,3 +10,5 @@
 	default = simple
 [alias]
 	l = log --graph --abbrev-commit --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
+[diff "localizablestrings"]
+    textconv = "iconv -f utf-16 -t utf-8"
