@@ -5,7 +5,8 @@ set nocompatible
 set rtp+=~/.vim/bundle/vundle
 call vundle#rc()
 Bundle 'godlygeek/tabular'
-Bundle 'elixir-lang/vim-elixir'
+Bundle 'SirVer/ultisnips'
+"Bundle 'elixir-lang/vim-elixir'
 "Bundle 'gmarik/vundle'
 "Bundle 'vim-scripts/localvimrc'
 
@@ -104,7 +105,7 @@ set incsearch
 nmap <silent> ,cl :nohlsearch<cr>
 
 " highlight long lines
-set colorcolumn=80
+set colorcolumn=100
 
 " gui display stuff
 set guifont="DejaVu Sans Mono 9"
