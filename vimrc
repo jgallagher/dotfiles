@@ -6,6 +6,8 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#rc()
 Bundle 'godlygeek/tabular'
 Bundle 'SirVer/ultisnips'
+Bundle 'scrooloose/syntastic'
+Bundle 'tpope/vim-fugitive'
 "Bundle 'elixir-lang/vim-elixir'
 "Bundle 'gmarik/vundle'
 "Bundle 'vim-scripts/localvimrc'
