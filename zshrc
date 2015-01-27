@@ -163,6 +163,16 @@ if [[ -d /usr/local ]]; then
     fi
 fi
 
+# look for homebrew's llvm
+if [[ -d /usr/local/opt/llvm/bin ]]; then
+    path=(/usr/local/opt/llvm/bin $path)
+fi
+
+# look for rust
+if [[ -d /usr/local/lib/rustlib/x86_64-apple-darwin/lib ]]; then
+    export DYLD_LIBRARY_PATH=/usr/local/lib/rustlib/x86_64-apple-darwin/lib:$DYLD_LIBRARY_PATH
+fi
+
 # look for rubygem binaries
 if [[ -d /usr/local/opt/ruby/bin ]]; then
     path=(/usr/local/opt/ruby/bin $path)
