@@ -1,0 +1,65 @@
+# Make command key C-z
+unbind C-b
+set -g prefix C-z
+bind-key z send-key C-z
+
+# Index windows and panes from 1 instead of 0.
+set -g base-index 1
+setw -g pane-base-index 1
+
+# Make active pane obvious.
+set -g pane-border-fg blue
+set -g pane-border-bg black
+set -g pane-active-border-fg white
+set -g pane-active-border-bg blue
+
+# Faster reloading of .tmux.conf.
+bind-key r source-file ~/.tmux.conf \; display "Reloaded!"
+
+# Faster moving.
+bind-key -n M-, previous-window
+bind-key -n M-. next-window
+set -sg escape-time 1
+
+# split windows like vim
+# vim's definition of a horizontal/vertical split is reversed from tmux's
+bind s split-window -v
+bind v split-window -h
+
+# move around panes with hjkl, as one would in vim after pressing ctrl-w
+bind h select-pane -L
+bind j select-pane -D
+bind k select-pane -U
+bind l select-pane -R
+
+# resize panes the same way; -r makes it repeatable
+bind -r H resize-pane -L 5
+bind -r J resize-pane -D 5
+bind -r K resize-pane -U 5
+bind -r L resize-pane -R 5
+
+# vi-style controls for copy mode
+setw -g mode-keys vi
+
+# longer history
+set -g history-limit 8000
+
+# Statusbar properties.
+set -g display-time 5000
+set -g status-bg black
+set -g status-fg white
+set-window-option -g window-status-current-attr bright,reverse
+set -g status-left "#[fg=green]#S"
+set -g status-right "#[fg=green]#h | %H:%M#[default]"
+
+# Use zsh instead of bash.
+set -g default-command "zsh"
+
+# Fast man pages.
+bind / command-prompt -p "man:" "split-window 'exec man %%'"
+
+# Stop getting italics instead of reverse video in "less" searches.
+set -g terminal-overrides "*:sitm@"
+
+# Explicitly disable mouse access.
+setw -g mode-mouse off
