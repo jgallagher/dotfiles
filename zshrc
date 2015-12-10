@@ -208,3 +208,6 @@ export LESS=-r
 xcode-debug() {
     lldb -p `ps aux | grep 'Xcode$' | grep -v grep | awk '{print $2}'`
 }
+
+# added by travis gem
+[ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
