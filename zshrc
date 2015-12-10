@@ -99,6 +99,7 @@ fi
 function add_git_ps1() {
     for file (
         $HOME/.git-prompt.zsh
+        /etc/bash_completion.d/git-prompt
         /usr/local/etc/bash_completion.d/git-prompt.sh
         /usr/share/git/completion/git-prompt.sh
         /usr/share/git-core/git-prompt.sh
