@@ -168,10 +168,13 @@ if [[ -d /usr/local/opt/llvm/bin ]]; then
     path=(/usr/local/opt/llvm/bin $path)
 fi
 
-# look for rust
-if [[ -d /usr/local/lib/rustlib/x86_64-apple-darwin/lib ]]; then
-    export DYLD_LIBRARY_PATH=/usr/local/lib/rustlib/x86_64-apple-darwin/lib:$DYLD_LIBRARY_PATH
+# look for multirust
+if [[ -d $HOME/multirust/bin ]]; then
+    path=($HOME/multirust/bin $path)
 fi
+#if [[ -d /usr/local/lib/rustlib/x86_64-apple-darwin/lib ]]; then
+#    export DYLD_LIBRARY_PATH=/usr/local/lib/rustlib/x86_64-apple-darwin/lib:$DYLD_LIBRARY_PATH
+#fi
 
 # look for rubygem binaries
 if [[ -d /usr/local/opt/ruby/bin ]]; then
@@ -189,6 +192,11 @@ fi
 # look for mysql
 if [[ -d /usr/local/mysql/bin ]]; then
     path=($path /usr/local/mysql/bin)
+fi
+
+# look for `cargo install`'d binaries
+if [[ -d $HOME/.multirust/toolchains/nightly/cargo/bin ]]; then
+    path=($path $HOME/.multirust/toolchains/nightly/cargo/bin)
 fi
 
 # generic environment
