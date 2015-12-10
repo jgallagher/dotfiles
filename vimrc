@@ -7,11 +7,12 @@ call vundle#rc()
 Bundle 'godlygeek/tabular'
 Bundle 'SirVer/ultisnips'
 Bundle 'scrooloose/syntastic'
-Bundle 'tpope/vim-fugitive'
+Plugin 'tpope/vim-fugitive'
+Plugin 'Chiel92/vim-autoformat'
+Bundle 'fatih/vim-go'
 Plugin 'rust-lang/rust.vim'
-"Bundle 'elixir-lang/vim-elixir'
-"Bundle 'gmarik/vundle'
-"Bundle 'vim-scripts/localvimrc'
+Plugin 'plasticboy/vim-markdown'
+Plugin 'cespare/vim-toml'
 
 " whitelist lvimrc files under our git repo
 if isdirectory(expand("~/dotfiles/lvimrc"))
