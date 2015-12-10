@@ -98,10 +98,6 @@ nmap <silent> ,sv :so $MYVIMRC<cr>
 " line numbers
 set number
 
-" experiment: try relative line numbering
-" don't like it
-"set relativenumber
-
 " case sensitive, highlit searches that match incrementally
 set noignorecase
 set smartcase
@@ -158,9 +154,8 @@ set <F13>=[31~
 map <F13> <C-Tab>
 nmap <C-Tab> gt
 
-" relative numbers in normal mode, absolute in insert
-autocmd InsertEnter * :set number
-autocmd InsertLeave * :set relativenumber
+" relative line numbers
+set relativenumber
 
 " Run autoformat on current buffer
 nmap <leader>f :Autoformat<cr>
