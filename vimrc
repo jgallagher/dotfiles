@@ -23,6 +23,9 @@ endif
 " allow dirty buffers
 set hidden
 
+" allow per-project .exrc files
+set exrc
+
 " proper encoding
 set encoding=utf-8
 
@@ -83,7 +86,7 @@ set showmode
 " better menu completion
 set wildmenu
 set wildmode=longest,list:longest
-set wildignore+=*.pyc
+set wildignore+=*.pyc,node_modules,bower_components,target
 
 " show $ in change mode
 " set cpoptions+=$
@@ -121,7 +124,7 @@ colorscheme wombat256mod
 set vb
 
 " useful status line
-set stl=%f\ %m\ %r\ Line:\ %l/%L[%p%%]\ Col:\ %c\ Buf:\ #%n\ [%b][0x%B]
+set stl=%f\ %m\ %r\ Line:\ %l/%L[%p%%]\ Col:\ %c\ %{fugitive#statusline()}
 set laststatus=2
 
 " turn off most GUI trappings
@@ -145,6 +148,22 @@ cnoremap <C-B> <Left>
 cnoremap <C-F> <Right>
 cnoremap <C-E> <End>
 cnoremap <C-P> <Up>
+
+" ctrl-space for omnicomplete
+inoremap <Nul> <C-x><C-o>
+inoremap <Nul> <C-x><C-o>
+
+" In iterm keyboard preferences, map ctrl-tab to send the escape sequence [31~
+set <F13>=[31~
+map <F13> <C-Tab>
+nmap <C-Tab> gt
+
+" relative numbers in normal mode, absolute in insert
+autocmd InsertEnter * :set number
+autocmd InsertLeave * :set relativenumber
+
+" Run autoformat on current buffer
+nmap <leader>f :Autoformat<cr>
 
 " highlight extra whitespace
 "highlight ExtraWhitespace guibg=red
@@ -187,3 +206,6 @@ else
         endif
     endif
 endif
+
+" vim-markdown options
+let g:vim_markdown_folding_disabled=1
