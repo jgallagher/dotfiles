@@ -185,6 +185,11 @@ fi
 # configure rbenv
 if which rbenv > /dev/null; then eval "$(rbenv init - zsh)"; fi
 
+# look for raspberry pi cross compile tools
+if [[ -d $HOME/pi-tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin ]]; then
+    path=($path $HOME/pi-tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin)
+fi
+
 # look for macvim
 if [[ -f /usr/local/bin/mvim ]]; then
     alias vim='mvim -v'
