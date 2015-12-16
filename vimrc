@@ -1,9 +1,10 @@
 " act like vim not vi
 set nocompatible
+filetype off
 
 " experiment - vundle instead of pathogen
 set rtp+=~/.vim/Vundle.vim
-call vundle#rc()
+call vundle#begin()
 Bundle 'godlygeek/tabular'
 Bundle 'SirVer/ultisnips'
 Bundle 'scrooloose/syntastic'
@@ -68,9 +69,6 @@ let mapleader = ","
 
 " sortcut to kill trailing whitespace
 nmap <silent> ,ww :%s/^\s\+$//<cr> :%s/\s\+$//<cr>
-
-" filetype stuff
-filetype plugin indent on
 
 " autoindenting
 set autoindent
