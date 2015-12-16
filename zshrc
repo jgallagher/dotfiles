@@ -205,6 +205,11 @@ if [[ -d $HOME/.multirust/toolchains/nightly/cargo/bin ]]; then
     path=($path $HOME/.multirust/toolchains/nightly/cargo/bin)
 fi
 
+# look for rust source
+if [[ -d $HOME/github/open-source/rust/src ]]; then
+    export RUST_SRC_PATH=$HOME/github/open-source/rust/src
+fi
+
 # generic environment
 export EDITOR=vim
 export PAGER=less

@@ -13,6 +13,7 @@ Bundle 'fatih/vim-go'
 Plugin 'rust-lang/rust.vim'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'cespare/vim-toml'
+Plugin 'racer-rust/vim-racer'
 
 " whitelist lvimrc files under our git repo
 if isdirectory(expand("~/dotfiles/lvimrc"))
