@@ -15,6 +15,9 @@ Plugin 'rust-lang/rust.vim'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'cespare/vim-toml'
 Plugin 'racer-rust/vim-racer'
+call vundle#end()
+
+filetype indent plugin on
 
 " whitelist lvimrc files under our git repo
 if isdirectory(expand("~/dotfiles/lvimrc"))
@@ -154,7 +157,7 @@ map <F13> <C-Tab>
 nmap <C-Tab> gt
 
 " relative line numbers
-set relativenumber
+"set relativenumber
 
 " Run autoformat on current buffer
 nmap <leader>f :Autoformat<cr>
