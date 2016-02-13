@@ -9,12 +9,12 @@ Bundle 'godlygeek/tabular'
 Bundle 'SirVer/ultisnips'
 Bundle 'scrooloose/syntastic'
 Plugin 'tpope/vim-fugitive'
-Plugin 'Chiel92/vim-autoformat'
 Bundle 'fatih/vim-go'
 Plugin 'rust-lang/rust.vim'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'cespare/vim-toml'
 Plugin 'racer-rust/vim-racer'
+Plugin 'valloric/YouCompleteMe'
 call vundle#end()
 
 filetype indent plugin on
@@ -139,6 +139,9 @@ noremap <silent> ,h :wincmd h<cr>
 noremap <silent> ,j :wincmd j<cr>
 noremap <silent> ,k :wincmd k<cr>
 noremap <silent> ,l :wincmd l<cr>
+
+" faster rustfmt
+noremap <F3> :RustFmt<cr>
 
 " emacs-line editing of the command
 cnoremap <C-A> <Home>
