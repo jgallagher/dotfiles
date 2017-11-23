@@ -141,8 +141,9 @@ declare -U path
 if [[ -d /usr/local/go/bin ]]; then
     path=($path /usr/local/go/bin)
 fi
-if [[ -d $HOME/gocode ]]; then
-    export GOPATH=$HOME/gocode
+if [[ -d $HOME/go ]]; then
+    export GOPATH=$HOME/go
+    path=($path $GOPATH/bin)
 fi
 
 # look for ~/bin
@@ -165,17 +166,14 @@ if [[ -d /usr/local ]]; then
 fi
 
 # look for homebrew's llvm
-if [[ -d /usr/local/opt/llvm/bin ]]; then
-    path=(/usr/local/opt/llvm/bin $path)
-fi
-
-# look for multirust
-if [[ -d $HOME/multirust/bin ]]; then
-    path=($HOME/multirust/bin $path)
-fi
-#if [[ -d /usr/local/lib/rustlib/x86_64-apple-darwin/lib ]]; then
-#    export DYLD_LIBRARY_PATH=/usr/local/lib/rustlib/x86_64-apple-darwin/lib:$DYLD_LIBRARY_PATH
+#if [[ -d /usr/local/opt/llvm/bin ]]; then
+#    path=(/usr/local/opt/llvm/bin $path)
 #fi
+
+# look for rust
+if [[ -d $HOME/.cargo/bin ]]; then
+    path=($HOME/.cargo/bin $path)
+fi
 
 # look for rubygem binaries
 if [[ -d /usr/local/opt/ruby/bin ]]; then
@@ -195,9 +193,20 @@ if [[ -f /usr/local/bin/mvim ]]; then
     alias vim='mvim -v'
 fi
 
+# look for neovim
+if type nvim > /dev/null; then
+    export NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+    alias vim='nvim'
+fi
+
 # look for mysql
 if [[ -d /usr/local/mysql/bin ]]; then
     path=($path /usr/local/mysql/bin)
+fi
+
+# look for MacTex
+if [[ -d /Library/TeX/texbin ]]; then
+    path=($path /Library/TeX/texbin)
 fi
 
 # look for `cargo install`'d binaries
