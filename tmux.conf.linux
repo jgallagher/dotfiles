@@ -62,4 +62,7 @@ bind / command-prompt -p "man:" "split-window 'exec man %%'"
 set -g terminal-overrides "*:sitm@"
 
 # Explicitly disable mouse access.
-setw -g mode-mouse off
+setw -g mouse off
+
+# Set terminal
+set -g default-terminal "screen-256color"
